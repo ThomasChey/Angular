@@ -1,0 +1,63 @@
+<form #form="ngForm" (ngSubmit)="submitContact(); form.reset();">
+
+  <h5 class="text-center m-4">
+    Ajouter un Contact
+  </h5>
+
+  <!--<pre>-->
+    <!--{{nouveauContact | json}}-->
+    <!--{{form.valid}}-->
+  <!--</pre>-->
+
+  <div class="form-group">
+    <input type="text"
+           name="name"
+           #name="ngModel" required
+           [(ngModel)]="nouveauContact.name"
+           [class.is-invalid]="name.touched && name.invalid"
+           [class.is-valid]="name.touched && name.valid"
+           placeholder="Saisissez le nom complet"
+           class="form-control"
+           pattern="[a-zA-ZÀ-ÿ ]{5,25}">
+
+    <div class="invalid-feedback">
+      Vous devez saisir votre nom complet
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text"
+           name="username"
+           #username="ngModel" required
+           [(ngModel)]="nouveauContact.username"
+           [class.is-invalid]="username.touched && username.invalid"
+           [class.is-valid]="username.touched && username.valid"
+           placeholder="Saisissez le pseudo"
+           class="form-control"
+            pattern="[a-zA-z]{3,13}">
+    <div class="invalid-feedback">
+      Vous devez saisir votre pseudo
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="email"
+           name="email"
+           #email="ngModel" required
+           [(ngModel)]="nouveauContact.email"
+           [class.is-invalid]="email.touched && email.invalid"
+           [class.is-valid]="email.touched && email.valid"
+           placeholder="Saisissez l'e-mail"
+           class="form-control"
+           pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+    <div class="invalid-feedback">
+      Vous devez saisir votre adresse e-mail
+    </div>
+  </div>
+
+  <button [disabled]="form.invalid"
+          class="btn btn-block btn-dark">
+    Créer le contact
+  </button>
+
+</form>

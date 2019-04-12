@@ -1,0 +1,35 @@
+<div class="container">
+  <header class="mb-4">
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">
+          {{title}}
+        </a>
+      </div>
+    </nav>
+  </header>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="list-group">
+        <a *ngFor="let contact of mesContacts"
+           (click)="showContact(contact)"
+           [class.active]="contactActif === contact"
+           href="#"
+           class="list-group-item list-group-item-action">
+          {{contact.name}}
+        </a>
+      </div> <!-- /.list-group -->
+      <app-ajouter (newContactEvent)="addContact($event)"></app-ajouter>
+    </div> <!-- /.col-sm-4 -->
+    <div class="col-sm-8">
+      <app-profil
+        [contactActif]="contactActif"
+        (updateContactEvent)="saveContact()"
+         (deleteContactEvent)="deleteContact($event)">
+      </app-profil>
+    </div> <!-- /.col-sm-8 -->
+  </div> <!-- /.row -->
+  <footer class="text-center">
+    Copyright &copy; 2019 - Trappes
+  </footer>
+</div> <!-- /.container -->

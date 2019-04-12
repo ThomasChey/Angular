@@ -1,0 +1,29 @@
+<div class="jumbotron" *ngIf="contactActif">
+  <h1 class="display-4">{{contactActif.name}}</h1>
+  <p class="lead"> {{contactActif.username}} </p>
+  <hr class="my-4">
+  <input type="text"
+         (change)="updateContact()"
+         [(ngModel)]="contactActif.name"
+         class="form-control">
+  <div class="d-flex flex-row-reverse mt-4">
+    <button
+      (click)="deleteContact()"
+      type="button"
+      class="btn btn-danger">
+      <i class="fas fa-trash"></i>
+      Supprimer ce contact
+    </button>
+  </div>
+  <p>{{contactActif.email}}</p>
+</div> <!-- /.jumbotron -->
+<div class="jumbotron" *ngIf="!contactActif">
+  <h1 class="display-4">
+    Bienvenue
+  </h1>
+  <p class="lead">
+    Choisissez un contact
+  </p>
+  <hr class="my-4">
+</div> <!-- /.jumbotron -->
+
